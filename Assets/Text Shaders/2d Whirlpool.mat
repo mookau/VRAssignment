@@ -50,14 +50,14 @@ Material:
     m_Floats:
     - Vector1_fab16ca6541f450790eeafd19f66f70e: 1
     - _AnimScale: 1
-    - _AnimSpeed: 0
-    - _EffectRange: 100
+    - _AnimSpeed: 1
+    - _EffectRange: 1
     - _EnableExternalAlpha: 0
     - _Offset: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TrackedPos: {r: 2.8455324, g: 343.90247, b: 0, a: 0}
+    - _TrackedPos: {r: 16.872395, g: 342.79834, b: 0, a: 0}
     - _WorldPos: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
