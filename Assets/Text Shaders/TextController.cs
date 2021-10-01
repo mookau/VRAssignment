@@ -23,6 +23,7 @@ public class TextController : MonoBehaviour
     private float animationScale = 1;
     private float offset = 0;
     private float effectRange = 1;
+    private float frequency = 1;
     private Vector3 stretchDirection = new Vector3(1, 0, 0);
 
     private float oldAnimationSpeed;
@@ -43,8 +44,8 @@ public class TextController : MonoBehaviour
     public float Offset { get => offset; set => offset = value; }
     public float EffectRange { get => effectRange; set => effectRange = value; }
     public Vector3 StretchDirection { get => stretchDirection; set => stretchDirection = value; }
-    
-    
+    public float Frequency { get => frequency; set => frequency = value; }
+
     public void ShaderToUse(int shad)
     {
         shaderToUse = (OPTIONS)shad;
@@ -112,6 +113,7 @@ public class TextController : MonoBehaviour
             textureMaterial.SetFloat("_AnimScale", animationScale);
             textureMaterial.SetFloat("_Offset", offset);
             textureMaterial.SetFloat("_EffectRange", effectRange);
+            textureMaterial.SetFloat("_Frequency", frequency);
             textureMaterial.SetVector("_StretchVector", stretchDirection);
 
             oldAnimationSpeed = animationSpeed;
