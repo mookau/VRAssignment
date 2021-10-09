@@ -12,25 +12,34 @@ public class TextController : MonoBehaviour
         Squash = 1,
         Wave = 2,
         Whirlpool = 3,
+        WaveAndWhirlpool = 4,
+        ShiftText = 5
     }
 
     public Material defaultMaterial;
     public Material squashMaterial;
     public Material waveMaterial;
     public Material whirlpoolMaterial;
+    public Material combinedMaterial;
 
     private float animationSpeed = 1;
     private float animationScale = 1;
+    [SerializeField]
     private float offset = 0;
     private float effectRange = 1;
     private float frequency = 1;
     private Vector3 stretchDirection = new Vector3(1, 0, 0);
+    [SerializeField]
+    private Vector3 shiftDirection = new Vector3(1, -1, 0);
 
-    private float oldAnimationSpeed;
-    private float oldAnimationScale;
-    private float oldOffset;
-    private float oldEffectRange;
-    private Vector3 oldStretchDirection;
+    private GameObject duplicateText;
+
+    private float oldAnimationSpeed = 1;
+    private float oldAnimationScale = 1;
+    private float oldOffset = 0;
+    private float oldEffectRange = 1;
+    private float oldFrequency = 1;
+    private Vector3 oldStretchDirection = new Vector3(1, 0, 0);
 
     private GameObject trackedObject;
     private Vector3 trackedPos;
@@ -45,6 +54,7 @@ public class TextController : MonoBehaviour
     public float EffectRange { get => effectRange; set => effectRange = value; }
     public Vector3 StretchDirection { get => stretchDirection; set => stretchDirection = value; }
     public float Frequency { get => frequency; set => frequency = value; }
+    public Vector3 ShiftDirection { get => shiftDirection; set => shiftDirection = value; }
 
     public void ShaderToUse(int shad)
     {
@@ -53,6 +63,7 @@ public class TextController : MonoBehaviour
 
     void SetEnumMaterial(OPTIONS mat)
     {
+        duplicateText.SetActive(false);
         switch (mat)
         {
             case OPTIONS.Squash:
@@ -63,6 +74,13 @@ public class TextController : MonoBehaviour
                 break;
             case OPTIONS.Whirlpool:
                 textureMaterial = Material.Instantiate(whirlpoolMaterial);
+                break;
+            case OPTIONS.WaveAndWhirlpool:
+                textureMaterial = Material.Instantiate(combinedMaterial);
+                break;
+            case OPTIONS.ShiftText:
+                textureMaterial = Material.Instantiate(defaultMaterial);
+                duplicateText.SetActive(true);
                 break;
             default:
                 textureMaterial = Material.Instantiate(defaultMaterial);
@@ -84,7 +102,14 @@ public class TextController : MonoBehaviour
         {
             trackedPos = trackedObject.transform.position;
         }
-        //textureMaterial = this.GetComponent<Text>().material;
+
+        textureMaterial = Material.Instantiate(defaultMaterial);
+
+        duplicateText = GameObject.Instantiate(this.gameObject);
+        Destroy(duplicateText.GetComponent<TextController>());
+        duplicateText.transform.SetParent(this.transform.parent);
+        duplicateText.transform.localScale = Vector3.one;
+        duplicateText.SetActive(false);
 
         SetEnumMaterial(shaderToUse);
         lastMat = shaderToUse;
@@ -107,7 +132,7 @@ public class TextController : MonoBehaviour
             lastMat = shaderToUse;
         }
 
-        if (oldAnimationSpeed != animationSpeed || oldAnimationScale != animationScale || oldOffset != offset || oldEffectRange != effectRange || oldStretchDirection != stretchDirection)
+        if (oldAnimationSpeed != animationSpeed || oldAnimationScale != animationScale || oldOffset != offset || oldEffectRange != effectRange || oldFrequency != frequency|| oldStretchDirection != stretchDirection)
         {
             textureMaterial.SetFloat("_AnimSpeed", animationSpeed);
             textureMaterial.SetFloat("_AnimScale", animationScale);
@@ -120,17 +145,20 @@ public class TextController : MonoBehaviour
             oldAnimationScale = animationScale;
             oldOffset = offset;
             oldEffectRange = effectRange;
+            oldFrequency = frequency;
             oldStretchDirection = stretchDirection;
         }
 
         if (trackedObject != null)
         {
             trackedPos = new Vector3(trackedObject.transform.position.x, trackedObject.transform.position.y);
-            //Debug.Log(trackedPos);
         }
         textureMaterial.SetVector("_ObjWorldPos", this.transform.position);
         textureMaterial.SetVector("_TrackedPos", this.trackedPos);
 
-        //Debug.Log(trackedPos);
+        if (shaderToUse == OPTIONS.ShiftText)
+        {
+            duplicateText.transform.position = this.transform.position + ShiftDirection * offset;
+        }
     }
 }

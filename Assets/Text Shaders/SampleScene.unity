@@ -53616,6 +53616,7 @@ MonoBehaviour:
   squashMaterial: {fileID: 2100000, guid: 426b6a1d55f65474d95bf1a15306d466, type: 2}
   waveMaterial: {fileID: 2100000, guid: 2488e792c0dec3d4f83cadd1ff6ac4c4, type: 2}
   whirlpoolMaterial: {fileID: 2100000, guid: 2fbfb07dfe00ef04fadacdf8e81fc5ab, type: 2}
+  combinedMaterial: {fileID: 2100000, guid: c05e1282b0ee6514ea7fe36db7e2edf2, type: 2}
   shaderToUse: 0
 --- !u!1 &1670516123
 GameObject:
