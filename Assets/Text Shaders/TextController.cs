@@ -63,7 +63,7 @@ public class TextController : MonoBehaviour
 
     void SetEnumMaterial(OPTIONS mat)
     {
-        duplicateText.SetActive(false);
+        Destroy(duplicateText);
         switch (mat)
         {
             case OPTIONS.Squash:
@@ -80,6 +80,10 @@ public class TextController : MonoBehaviour
                 break;
             case OPTIONS.ShiftText:
                 textureMaterial = Material.Instantiate(defaultMaterial);
+                duplicateText = GameObject.Instantiate(this.gameObject);
+                Destroy(duplicateText.GetComponent<TextController>());
+                duplicateText.transform.SetParent(this.transform.parent);
+                duplicateText.transform.localScale = Vector3.one;
                 duplicateText.SetActive(true);
                 break;
             default:
