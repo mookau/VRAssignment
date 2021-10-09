@@ -55928,6 +55928,7 @@ GameObject:
   - component: {fileID: 1404080531}
   - component: {fileID: 1404080530}
   - component: {fileID: 1404080533}
+  - component: {fileID: 1404080534}
   m_Layer: 10
   m_Name: OptionsTestText
   m_TagString: Untagged
@@ -56062,6 +56063,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &1404080534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404080528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91752dc37b2c4394e9984b2f3133a1a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: 5de1b2002a32e1d46bfd60b491b89ba2, type: 2}
+  squashMaterial: {fileID: 2100000, guid: 426b6a1d55f65474d95bf1a15306d466, type: 2}
+  waveMaterial: {fileID: 2100000, guid: 2488e792c0dec3d4f83cadd1ff6ac4c4, type: 2}
+  whirlpoolMaterial: {fileID: 2100000, guid: 2fbfb07dfe00ef04fadacdf8e81fc5ab, type: 2}
+  combinedMaterial: {fileID: 2100000, guid: c05e1282b0ee6514ea7fe36db7e2edf2, type: 2}
+  offset: 0
+  shiftDirection: {x: 1, y: -1, z: 0}
+  shaderToUse: 0
 --- !u!1 &1408274809
 GameObject:
   m_ObjectHideFlags: 0
