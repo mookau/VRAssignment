@@ -1,0 +1,30 @@
+// Load File
+//
+// Format Key
+//	- Description: What this variable is used for:
+//	- Potential Values: Values that can be put in this variable slot
+//  - Default Value: Default value if actual value not set
+//	- Actual Value: User defined value
+//
+// List of Values
+// - Testmode 
+// - EffectTextFileName
+// - TestQuestionTextFileName
+// - TestResultsLogFileName
+// - 
+// + Effect Values
+// - Font Type
+// - Font Size
+// - Effects list
+// -  
+// - Effect Application Bool
+// - Effect Parameters
+// -
+// + Test Values
+// - Font Type
+// - Font size
+// - Question time
+// - 
+// - Effect Application Bool
+// - Efect Parameters
+// -

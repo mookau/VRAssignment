@@ -1,0 +1,39 @@
+//This is a delimiter for TCP commands, sent to and from the server.
+//This must match the server and administrator delimiters.
+delimiter				,		;
+
+//This denotes the IP address of the server.
+//This can be a network name.
+ServerIpAddress			,		10.0.0.1
+
+//This is the port the server listens on.
+//It is also the port the application sends data on.
+ServerPort				,		50000
+
+//This is how many tries the application should try reconnect to the server.
+ConnectionTimeOutCount	, 		30
+
+//This denotes the TCP port that is used by the application.
+//It can only be used by one application at a time.
+//If N is this port, N+1 is the receiving UDP port, N+2 is the sending UDP port.
+ClientConnectionPort		,		51000
+
+//This denotes the client's name. This must be unique amongst the client applications.
+//The server can handle if the names are not unique.
+//The server appends a number to their name, based on how many users have that base name.
+ClientName				,		User51000
+
+//This denotes the client's push-to-talk key.
+key					,		S
+
+//This is how often the client sends voice data. It should be at least 50. Anything less provides a poor experience.
+//This is in milliseconds.
+breakInterval			,		50
+
+//This is directory denoting sounds the client can send to the server.
+//This directory can be empty, but must exist.
+soundDirectory 			, 		.\sounds
+
+//This is the sample rate of the recorder object.
+//Use 48000 for the best experience.
+sampleRateRecorder		,		48000
