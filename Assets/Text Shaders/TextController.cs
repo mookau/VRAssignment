@@ -3,6 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+//For integrating into UI
+
+//Get all text controllers and change their effect range
+/*
+var listOfTextControllers = FindObjectsOfType<TextController>();
+foreach(var e in listOfTextControllers)
+{
+    e.EffectRange = 2;
+}
+*/
+
+//get all text controllers and change their current shader
+/*
+var listOfTextControllers = FindObjectsOfType<TextController>();
+foreach(var e in listOfTextControllers)
+{
+    e.ShaderToUse(OPTIONS.WaveAndWhirlpool);
+}
+*/
+
+
 public class TextController : MonoBehaviour
 {
 
@@ -56,9 +78,9 @@ public class TextController : MonoBehaviour
     public float Frequency { get => frequency; set => frequency = value; }
     public Vector3 ShiftDirection { get => shiftDirection; set => shiftDirection = value; }
 
-    public void ShaderToUse(int shad)
+    public void ShaderToUse(OPTIONS shad)
     {
-        shaderToUse = (OPTIONS)shad;
+        shaderToUse = shad;
     }
 
     void SetEnumMaterial(OPTIONS mat)
